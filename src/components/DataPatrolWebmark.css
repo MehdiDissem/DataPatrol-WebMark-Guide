@@ -1,0 +1,190 @@
+.container {
+    padding: 3rem 1.5rem;
+    max-width: 980px;
+    margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #1f2937;
+    background-color: #ffffff;
+  }
+  
+  .main-title {
+    font-size: 2.75rem;
+    font-weight: 800;
+    text-align: center;
+    background: linear-gradient(to right, #E63A74, #a32d54);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 2.5rem;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+  }
+  
+  .tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+  
+  .tab {
+    padding: 0.6rem 1.6rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #E63A74;
+    background-color: #fff;
+    border: 2px solid #E63A74;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(230, 58, 116, 0.08);
+  }
+  
+  .tab::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background: radial-gradient(circle at top left, #E63A74 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
+  
+  .tab:hover::before {
+    opacity: 0.1;
+  }
+  
+  .tab:hover {
+    transform: translateY(-1px);
+    background-color: #fff0f6;
+  }
+  
+  .tab.active {
+    background: #E63A74;
+    color: white;
+    box-shadow: 0 5px 12px rgba(230, 58, 116, 0.4);
+  }
+  
+  
+  .doc-section {
+    margin-bottom: 3rem;
+  }
+  
+  .doc-title {
+    font-size: 1.625rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #1f2937;
+    border-left: 4px solid #E63A74;
+    padding-left: 0.75rem;
+  }
+  
+  ul {
+    padding-left: 1.25rem;
+    margin-top: 0.5rem;
+  }
+  
+  ul li {
+    margin-bottom: 0.4rem;
+    line-height: 1.6;
+  }
+  
+  ul li ul {
+    padding-left: 1.25rem;
+    margin-top: 0.25rem;
+  }
+  
+  .code-block {
+    background: #f3f4f6;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    position: relative;
+    overflow-x: auto;
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin-top: 1rem;
+  }
+  
+  .copy-btn {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background-color: #E63A74;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 0.55rem;
+    font-size: 0.95rem;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+    transition: background-color 0.2s ease;
+  }
+  
+  .copy-btn:hover {
+    background-color: #ec6a95;
+  }
+  
+  .toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #a32d54, #E63A74);
+    color: white;
+    padding: 14px 24px;
+    border-radius: 12px;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.4s ease;
+    z-index: 9999;
+    font-weight: 600;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  }
+  
+  .toast.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .download-btn {
+    background-color: white;
+    color: #E63A74;
+    padding: 0.9rem 1.7rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+  border-radius: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: fit-content;
+  }
+  
+  .download-btn:hover {
+    background-color: #FF6B81;
+  color: white;
+  transform: scale(1.05);
+  }
+  
+  .logo-container {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+  
+  .company-logo {
+    max-width: 200px;
+    height: auto;
+    transition: transform 0.2s ease;
+  }
+  
+  .company-logo:hover {
+    transform: scale(1.05);
+  }
+  

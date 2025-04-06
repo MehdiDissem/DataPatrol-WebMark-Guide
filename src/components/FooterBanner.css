@@ -1,0 +1,29 @@
+.footer-banner {
+    width: 100vw;
+    background-color: #E63A74;
+    color: white;
+    padding: 24px 16px;
+    text-align: center;
+    margin-top: 40px;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .footer-banner h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  
+  .footer-banner p {
+    font-size: 0.95rem;
+    margin-top: 8px;
+  }
+  
+  .footer-subtext {
+    font-size: 0.75rem;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  
