@@ -207,40 +207,38 @@ const DatapatrolWebmark = () => {
     const docs = view === "react" ? reactDocs : angularDocs;
     const sdkPlacementInfo = view === "react" ? reactSdkPlacementInfo : angularSdkPlacementInfo;
   
-    // Choose the image path based on the selected view (React or Angular)
     const overlayImageUrl = view === "react"
-      ? "React_placement.png"  // React screenshot path
-      : "Angular_Placement.png"; // Angular screenshot path
-  
+    ? "/React_Placement.png"  // React screenshot path
+    : "/Angular_Placement.png"; // Angular screenshot path
+
     const showToast = () => {
       setToastVisible(true);
       setTimeout(() => setToastVisible(false), 2000);
     };
-  
     const toggleOverlay = () => {
-      setShowOverlay(!showOverlay);
-    };
-  
+        setShowOverlay(!showOverlay);
+      };
+    
     return (
-      <div className="container">
-        {showOverlay && (
-          <Overlay
-            imageUrl={overlayImageUrl}  // Use the dynamic image URL here
-            onClose={toggleOverlay}
-          />
-        )}
-  
+        <div className="container">
+            {showOverlay && (
+        <Overlay
+          imageUrl={overlayImageUrl}  // Use the dynamic image URL here
+          onClose={toggleOverlay}
+        />
+      )}
         <Toast show={toastVisible} message="Copied to clipboard!" />
-  
+      
         <h1 className="main-title">WebMark Integration Guide</h1>
         <div className="logo-container">
-          <img src="/DATAPATROL_LOGO.png" alt="Company Logo" className="company-logo" />
+        <img src="/DATAPATROL_LOGO.png" alt="Company Logo" className="company-logo" />
         </div>
-  
+      
         <a href="/pdfs/WebMark-Integration-guide.pdf" download className="download-btn">
-          📄 Download PDF Guide
+    📄 Download PDF Guide
         </a>
-  
+
+      
         <div className="tabs">
           <button
             onClick={() => setView("react")}
@@ -255,31 +253,9 @@ const DatapatrolWebmark = () => {
             Angular Guide
           </button>
         </div>
+      
   
-        {/* SDK Placement Title with clickable image view */}
-        <div className="sdk-placement-info">
-        <h2 className="sdk-title">
-    SDK Placement (React)
-    <span className="click-screenshot" onClick={toggleOverlay}>
-      <span className="icon">↗️</span> Click to View Screenshot
-    </span>
-  </h2>
-          <ul>
-            <li>
-              Place the SDK in the public folder:
-              <ul>
-                <li>public/sdk.js</li>
-                <li>public/sdk.js.LICENSE.txt</li>
-              </ul>
-            </li>
-            <li>
-              Place sdk_models.js in the src folder:
-              <ul>
-                <li>src/sdk_models.js</li>
-              </ul>
-            </li>
-          </ul>
-        </div>
+        {sdkPlacementInfo}
   
         {docs.map((doc, idx) => (
           <div key={idx} className="doc-section">
@@ -290,6 +266,5 @@ const DatapatrolWebmark = () => {
       </div>
     );
   };
-  
 
 export default DatapatrolWebmark;
