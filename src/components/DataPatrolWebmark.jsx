@@ -72,7 +72,7 @@ const reactDocs = [
     code: `<script src="%PUBLIC_URL%/sdk.js"></script>`
   },
   {
-    title: "Imports and Setup",
+    title: "Imports and Setup (In main Layout, up with other imports)",
     code: `// In the React code, import the necessary functions from SDK Models:
 import {
   DataPatrolUserInfo,
@@ -84,7 +84,7 @@ import {
 } from "./sdk_models";`
   },
   {
-    title: "Set Up Token and App Info",
+    title: "Set Up Token and App Info (can be global variables)",
     code: `const token = "AD0920E1173E4E2920E111B7B9920E11C4BCD8920E115F8C50"; // Your unique token
 const appInfo = new DataPatrolAppInfo(
   "229994941111",          // Unique App ID provided by the customer
@@ -95,41 +95,33 @@ const appInfo = new DataPatrolAppInfo(
 let handler = '';`
   },
   {
-    title: "Apply Watermark Example",
-    code: `const applyWatermark = useCallback(async (user) => {
-  const userInfo = new DataPatrolUserInfo(user);
-  console.log(userInfo);
-  
-  if (window.DataPatrolWebSdk) {
-    window.DataPatrolWebSdk.eventEmitter.on('securityAlert', (dataPatrolSecurityAlertTypeEventArgs) => {
-      if (dataPatrolSecurityAlertTypeEventArgs.DataPatrolSecurityAlertType === DataPatrolSecurityAlertType.DevToolsDetected) {
-        sendLog("DevTool was opened");
+    title: "Apply Watermark Example (This function must be called)",
+    code: ` const applyWatermark = useCallback(async (user) => {
+    const userInfo = new DataPatrolUserInfo(user);
+    console.log(userInfo);
+    if (window.DataPatrolWebSdk) {
+      try {
+        handler = await window.DataPatrolWebSdk.applyWatermark(
+          "https://YOURDATAPATROLAPIHERE/int/v1/policy",
+          token,
+          userInfo,
+          appInfo,
+          false
+        );
+      } catch (error) {
+        console.error("Error applying watermark:", error);
       }
-    });
-    
-    try {
-      handler = await window.DataPatrolWebSdk.applyWatermark(
-        "https://YourDataPatrolApi.local/int/v1/policy",
-        token,
-        userInfo,
-        appInfo,
-        false
-      );
-    } catch (error) {
-      console.error("Error applying watermark:", error);
+    } else {
+      console.warn("DataPatrolWebSdk is not loaded.");
     }
-  } else {
-    console.warn("DataPatrolWebSdk is not loaded.");
-  }
-}, []);`
+  }, []);`
   },
   {
-    title: "Remove Watermark Example",
+    title: "Remove Watermark Example (this function must be called)",
     code: `// The handler should be passed to remove the watermark on logout or session end
 const removeWatermark = useCallback(async () => {
   if (window.DataPatrolWebSdk) {
     await window.DataPatrolWebSdk.removeWatermark(handler);
-    setWatermarkApplied(false);
   } else {
     console.warn("DataPatrolWebSdk is not loaded.");
   }
