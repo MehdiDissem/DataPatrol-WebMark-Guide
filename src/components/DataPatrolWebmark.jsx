@@ -81,7 +81,8 @@ import {
   DataPatrolLogLevel,
   DataPatrolFeatureType,
   DataPatrolSecurityAlertType
-} from "./sdk_models";`
+} from "./sdk_models";
+ import { useCallback } from 'react'`
   },
   {
     title: "Set Up Token and App Info (can be global variables)",
@@ -142,6 +143,9 @@ const angularDocs = [
     code: `// In app.component.ts:
 import { DataPatrolAppInfo, DataPatrolSecurityAlertType, DataPatrolUserInfo } from 'src/sdk_models';`
   },
+  {title:"Declare the sdk type",
+    code:"declare var DataPatrolWebSdk: any;"
+  },
   {
     title: "Declare Handler in AppComponent",
     code: `// Inside AppComponent class:
@@ -152,20 +156,18 @@ static handler: string = "";`
     code: `// Call this function with the username to apply the watermark
 export async function applyWatermarkInternal(userName: string) {
   var token: string = "AD0920E1173E4E2920E111B7B9920E11C4BCD8920E115F8C50";
-  var appInfo: DataPatrolAppInfo = new DataPatrolAppInfo("229994940", "Customer A Web App", "3.0.0.0");
+  var appInfo: DataPatrolAppInfo = new DataPatrolAppInfo("2299949411", "Customer A Web App", "3.0.0.0");
   var userInfo: DataPatrolUserInfo = new DataPatrolUserInfo(userName);
 
   if (DataPatrolWebSdk) {
-    DataPatrolWebSdk.eventEmitter.on('securityAlert', (dataPatrolSecurityAlertTypeEventArgs: any) => {
-      if (dataPatrolSecurityAlertTypeEventArgs.DataPatrolSecurityAlertType == DataPatrolSecurityAlertType.DevToolsDetected) {
-        window.alert("DevTool detected" + dataPatrolSecurityAlertTypeEventArgs.DataPatrolSecurityAlertType);
-      } else if (dataPatrolSecurityAlertTypeEventArgs.DataPatrolSecurityAlertType === DataPatrolSecurityAlertType.AdBlockerDetected) {
-        window.alert("AdBlocker detected" + dataPatrolSecurityAlertTypeEventArgs.DataPatrolSecurityAlertType);
-      }
-    });
-
     try {
-      AppComponent.handler = await DataPatrolWebSdk.applyWatermark("https://YourDataPatrolApi.local/int/v1/policy", token, userInfo, appInfo);
+      AppComponent.handler = await DataPatrolWebSdk.applyWatermark(
+        "https://YOURDATAPATROLAPIHERE.dev/int/v1/policy",
+        token,
+        userInfo,
+        appInfo,
+        false
+      );
     } catch (error) {
       console.error("Catch " + error);
     }
