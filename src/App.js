@@ -1,17 +1,14 @@
+import React from "react";
+import DataPatrolWebmark from "./components/DataPatrolWebmark";
+import FooterBanner from "./components/FooterBanner";
 
-import './App.css';
-import DatapatrolWebmark from './components/DataPatrolWebmark';
-import FooterBanner from './components/FooterBanner';
-
-
-function App() {
+const App = () => {
   return (
-    <div>
-
-      <DatapatrolWebmark />
-      <FooterBanner/>
-    </div>
+    <>
+      <DataPatrolWebmark />
+      <FooterBanner />
+    </>
   );
-}
+};
 
 export default App;

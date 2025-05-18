@@ -1,11 +1,10 @@
-const Overlay = ({ imageUrl, onClose }) => {
-    return (
-      <div className="overlay" onClick={onClose}>
-        <div className="overlay-content" onClick={(e) => e.stopPropagation()}>
-          <img src={imageUrl} alt="SDK Placement Screenshot" className="overlay-image" />
-          <button className="overlay-close-btn" onClick={onClose}>X</button>
-        </div>
-      </div>
-    );
-  };
- export default Overlay 
+import React from "react";
+import "../DataPatrolWebmark.css";
+
+const Overlay = ({ imageUrl, onClose }) => (
+  <div className="overlay" onClick={onClose}>
+    <img src={imageUrl} alt="SDK Placement" />
+  </div>
+);
+
+export default Overlay;
