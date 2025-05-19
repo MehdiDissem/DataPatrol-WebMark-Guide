@@ -271,4 +271,21 @@
   .click-screenshot:active {
     transform: translateY(1px); /* Subtle press effect */
   }
+  .toggle-buttons {
+    margin-bottom: 0.5rem;
+  }
+  
+  .toggle-btn {
+    margin-right: 0.5rem;
+    padding: 6px 12px;
+    border: none;
+    background: #444;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .toggle-btn.active {
+    background: #E63A74;
+  }
   
